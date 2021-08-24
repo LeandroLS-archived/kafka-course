@@ -3,7 +3,7 @@ const { Kafka } = require('kafkajs')
 const main = async () => {
     const kafka = new Kafka({
         clientId: 'my-app',
-        brokers: ['kafka-1:19092']
+        brokers: ['localhost:19092']
     })
 
     const producer = kafka.producer()
