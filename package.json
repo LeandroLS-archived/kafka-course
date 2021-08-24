@@ -1,0 +1,28 @@
+{
+  "name": "kafka-course",
+  "version": "1.0.0",
+  "description": "Praticando Kafka",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/index.js",
+    "dev": "nodemon -L ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeandroLS/kafka-course.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeandroLS/kafka-course/issues"
+  },
+  "homepage": "https://github.com/LeandroLS/kafka-course#readme",
+  "dependencies": {
+    "kafkajs": "^1.15.0",
+    "nodemon": "^2.0.12",
+    "npm": "^7.21.0",
+    "start": "^5.1.0"
+  }
+}
