@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/LeandroLS/kafka-course#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "kafkajs": "^1.15.0",
     "nodemon": "^2.0.12",
     "npm": "^7.21.0",
