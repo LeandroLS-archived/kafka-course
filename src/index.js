@@ -10,7 +10,7 @@ app.get('/teste', (req, res) => {
 app.post('/order', async (req, res) => {
     const kafka = new Kafka({
         clientId: 'my-app',
-        brokers: ['localhost:19092']
+        brokers: ['kafka:9092']
     })
 
     const producer = kafka.producer()
@@ -34,20 +34,20 @@ app.post('/order', async (req, res) => {
 app.get('/order/messages', async (req, res) => {
     const kafka = new Kafka({
         clientId: 'my-app',
-        brokers: ['localhost:19092']
+        brokers: ['kafka:9092']
     })
     const consumer = kafka.consumer({ groupId: 'test-group' })
 
     await consumer.connect()
     await consumer.subscribe({ topic: 'ECOMMERCE_NEW_ORDER', fromBeginning: true })
     await consumer.run({
-        
+
         eachMessage: async ({ topic, partition, message }) => {
             console.log('MENSAGEM')
             console.log({
                 value: message.value.toString(),
             })
-      },
+        },
     }).catch(e => console.log('DEU RUIM', e))
     res.send('mensagem foi de boas')
 })
