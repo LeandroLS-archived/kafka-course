@@ -20,14 +20,14 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
     depends_on:
       - zookeeper 
-  node-api:
+  node:
     image: "node:14"
     user: "node"
     working_dir: /home/node/app
     environment:
       - NODE_ENV=development
     volumes:
-      - ./api:/home/node/app
+      - ./:/home/node/app
     command: bash -c "npm install && npm run dev"
     depends_on:
       - kafka
