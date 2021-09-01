@@ -1,9 +1,9 @@
 const { Kafka } = require('kafkajs')
 const kafka = new Kafka({
-    clientId: 'my-app',
+    clientId: 'service-1',
     brokers: ['kafka:9092']
 })
-const consumer = kafka.consumer({ groupId: 'test-group' })
+const consumer = kafka.consumer({ groupId: 'service-group-1' })
 async function run() {
     await consumer.connect()
     await consumer.subscribe({ topic: 'ECOMMERCE_NEW_ORDER', fromBeginning: true })
