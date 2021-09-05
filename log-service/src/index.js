@@ -10,10 +10,10 @@ async function run() {
     await consumer.subscribe({ topic: 'ECOMMERCE_SEND_EMAIL', fromBeginning: true })
     await consumer.run({
         eachMessage: async ({ topic, partition, message }) => {
-            console.log('Logs')
-            console.log({
-                value: message.value.toString(),
-            })
+            console.log('---------- Logs ------------')
+            console.log(`Message: ${message.value.toString()}`)
+            console.log(`Topic: ${topic}`)
+            console.log(`Partition: ${partition}`)
         },
     }).catch(e => console.log('DEU RUIM', e))
 }
