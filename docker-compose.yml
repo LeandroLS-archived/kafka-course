@@ -33,25 +33,36 @@ services:
       - kafka
     ports:
       - 3000:3000
-  service-1:
+  email-service:
     image: "node:14"
     user: "node"
     working_dir: /home/node/app
     environment:
       - NODE_ENV=development
     volumes:
-      - ./service-1:/home/node/app
+      - ./email-service:/home/node/app
     command: bash -c "npm install && npm run dev"
     depends_on:
       - kafka
-  service-2:
+  fraud-detector:
     image: "node:14"
     user: "node"
     working_dir: /home/node/app
     environment:
       - NODE_ENV=development
     volumes:
-      - ./service-2:/home/node/app
+      - ./fraud-detector:/home/node/app
+    command: bash -c "npm install && npm run dev"
+    depends_on:
+      - kafka
+  log-service:
+    image: "node:14"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./log-service:/home/node/app
     command: bash -c "npm install && npm run dev"
     depends_on:
       - kafka
