@@ -1,4 +1,5 @@
 const { Kafka } = require('kafkajs')
+const { v4: uuidv4 } = require('uuid');
 const kafka = new Kafka({
     clientId: 'email-service',
     brokers: ['kafka:9092']
@@ -12,6 +13,7 @@ async function run() {
             console.log('Send email')
             console.log({
                 value: message.value.toString(),
+                key: uuidv4()
             })
             console.log('Email sent')
         },

@@ -1,4 +1,5 @@
 const express = require('express')
+const { v4: uuidv4 } = require('uuid');
 const app = express()
 const port = 3000
 const { Kafka } = require('kafkajs')
@@ -18,7 +19,10 @@ app.post('/order', async (req, res) => {
     await producer.send({
         topic: 'ECOMMERCE_NEW_ORDER',
         messages: [
-            { value: 'New order created' },
+            {
+                value: 'New order created',
+                key: uuidv4()
+            },
         ],
     })
     await producer.send({
